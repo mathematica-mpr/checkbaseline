@@ -8,6 +8,9 @@
 #' @import ggplot2
 #' @import data.table
 
+
+
+
 CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL) {
 
   # Construct baseformulas for balancing tests
