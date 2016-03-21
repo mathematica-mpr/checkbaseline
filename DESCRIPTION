@@ -1,7 +1,7 @@
 Package: checkbaseline
 Type: Package
 Title: Checks baseline equilevancy
-Version: 0.1.0
+Version: 0.1.1
 Date: 2016-03-19
 Authors@R: c(person("Ignacio", "Martinez", , "IMartinez@mathematica-mpr.com", c("aut", "cre")),
              person("Raul", "Torres", , "RTorres@mathematica-mpr.com", "aut"))
@@ -12,6 +12,4 @@ Imports:
     ggplot2,
     dplyr,
     data.table
-
-
-
+RoxygenNote: 5.0.1
