@@ -1,0 +1,53 @@
+---
+title: "Check Baseline Equivalency"
+author: "Ignacio Martinez"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+# OLS raw data
+
+```{r results='asis'}
+data("fake.df")
+lm1 <- lm(post.test ~ Treatment + V1 + V2, data = fake.df)
+stargazer::stargazer(lm1, type='html', style = "aer")
+
+```
+
+# Baseline
+
+```{r fig.height=4, fig.width=6}
+CheckBaseline(
+  raw.DF = fake.df,
+  treatment = 'Treatment',
+  variables = c('V2', 'V1', 'pre.test')
+)
+
+```
+
+# Baseline after matching
+
+```{r, fig.height=4, fig.width=6}
+data("fake.df.matched")
+X <- CheckBaseline(
+  raw.DF = fake.df,
+  matched.DF = fake.df.matched,
+  treatment = 'Treatment',
+  variables = c('V2', 'V1', 'pre.test')
+)
+X$propensity.plot
+X$baseline.plot
+```
+
+# Effect after matching
+```{r results='asis'}
+lm2 <- lm(post.test ~ Treatment + V1 + V2, data = fake.df.matched, weights = weights)
+stargazer::stargazer(lm1, lm2, type='html', style = "aer")
+```
+
