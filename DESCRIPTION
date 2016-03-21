@@ -1,0 +1,17 @@
+Package: checkbaseline
+Type: Package
+Title: Checks baseline equilevancy
+Version: 0.1.0
+Date: 2016-03-19
+Authors@R: c(person("Ignacio", "Martinez", , "IMartinez@mathematica-mpr.com", c("aut", "cre")),
+             person("Raul", "Torres", , "RTorres@mathematica-mpr.com", "aut"))
+Maintainer: Raul Torres <yourfault@somewhere.net>
+Description: Check baseline equilevancy
+License: MIT
+Imports:
+    ggplot2,
+    dplyr,
+    data.table
+
+
+
