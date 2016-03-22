@@ -1,13 +1,24 @@
 #' Check baseline equivalency
 #'
-#' @param raw.DF A number.
-#' @param matched.DF A number.
+#' @param raw.DF data frame you want to check.
+#' @param matched.DF matched data frame. This one is optional.
 #' @return Returns a list with plots and tables
 #' @export
 #' @import dplyr
 #' @import ggplot2
 #' @import data.table
-
+#' @examples
+#' data("fake.df")
+#' data("fake.df.matched")
+#' X <- CheckBaseline(
+#'   raw.DF = fake.df,
+#'     matched.DF = fake.df.matched,
+#'       treatment = 'Treatment',
+#'         variables = c('V2', 'V1', 'pre.test')
+#'         )
+#' X$baseline.plot
+#' @section Vignette:
+#' browseVignettes('checkbaseline')
 
 
 

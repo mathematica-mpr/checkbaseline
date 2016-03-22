@@ -7,14 +7,29 @@
 CheckBaseline(raw.DF, matched.DF = NULL, treatment, variables = NULL)
 }
 \arguments{
-\item{raw.DF}{A number.}
+\item{raw.DF}{data frame you want to check.}
 
-\item{matched.DF}{A number.}
+\item{matched.DF}{matched data frame. This one is optional.}
 }
 \value{
 Returns a list with plots and tables
 }
 \description{
 Check baseline equivalency
+}
+\section{Vignette}{
+
+browseVignettes('checkbaseline')
+}
+\examples{
+data("fake.df")
+data("fake.df.matched")
+X <- CheckBaseline(
+  raw.DF = fake.df,
+    matched.DF = fake.df.matched,
+      treatment = 'Treatment',
+        variables = c('V2', 'V1', 'pre.test')
+        )
+X$baseline.plot
 }
 
