@@ -10,9 +10,14 @@ CheckBaseline(raw.DF, matched.DF = NULL, treatment, variables = NULL)
 \item{raw.DF}{data frame you want to check.}
 
 \item{matched.DF}{matched data frame. This one is optional.}
+
+\item{treatment}{treatment variable}
+
+\item{variables}{you want to check}
 }
 \value{
-Returns a list with plots and tables
+Returns a list with the baseline equivalence plot and table.
+Additionally, if matched.DF is provided, it returns the propensity score distibution plot.
 }
 \description{
 Check baseline equivalency

@@ -2,7 +2,10 @@
 #'
 #' @param raw.DF data frame you want to check.
 #' @param matched.DF matched data frame. This one is optional.
-#' @return Returns a list with plots and tables
+#' @param treatment treatment variable
+#' @param variables you want to check
+#' @return Returns a list with the baseline equivalence plot and table.
+#' Additionally, if matched.DF is provided, it returns the propensity score distibution plot.
 #' @export
 #' @import dplyr
 #' @import ggplot2
