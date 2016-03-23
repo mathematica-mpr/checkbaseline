@@ -24,8 +24,8 @@ psdplot <- function(matched_dta, trt_var, distance = distance, mytitle = "Propen
           panel.grid.minor.y = element_blank(),
           panel.grid.major.y = element_line(colour = "gray60", linetype = 3),
           panel.border = element_blank(),
-          panel.background = element_blank()) +
-    ggtitle(mytitle)
+          panel.background = element_blank()) # +
+#    ggtitle(mytitle)
   #print(plotpsmdist)
   return(plotpsmdist)
 }

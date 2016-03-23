@@ -122,7 +122,7 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
         strip.background = element_rect(fill="white", color="white")) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
-  ggtitle(mytitle) +
+#  ggtitle(mytitle) +
 
   # adding arrows
   geom_segment(
