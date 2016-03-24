@@ -1,8 +1,6 @@
 #### STANDARDIZED BIAS PLOT WITHOUT ARROWS [i.e. no matching]
 sbplot_nm <- function(plot.df = non_matched.tb) {
 
- #print("Starting standardized bias plot for non-matched data")
-
  plot.df$NameNumber <- as.numeric(rownames(plot.df))
  min_x = round(min(plot.df$Standardized.bias),1) -.1
  max_x = round(max(plot.df$Standardized.bias),1) +.1
@@ -53,8 +51,6 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
 
 #### STANDARDIZED BIAS PLOT WITH ARROWS [i.e. with matched and un-matched data]*
 sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
-
- #print("Starting standardized bias plot for matched data")
 
  # obtain parameters
  min_x = round(min(plot.df$Standardized.bias),1) -.1
@@ -122,7 +118,6 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
         strip.background = element_rect(fill="white", color="white")) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
-#  ggtitle(mytitle) +
 
   # adding arrows
   geom_segment(
