@@ -44,7 +44,8 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
         panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
         panel.border = element_blank()) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
-  geom_vline(xintercept = 0, linetype = "longdash", colour="gray")
+  geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
+   theme_mpr()
  return(sb.plot_nm)
 
 }
@@ -116,6 +117,7 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
         panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
         panel.border = element_blank(),
         strip.background = element_rect(fill="white", color="white")) +
+   theme_mpr() +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
 

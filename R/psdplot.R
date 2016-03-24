@@ -37,7 +37,9 @@ psdplot <- function(matched_dta, trt_var, distance = distance, mytitle = "Propen
           panel.grid.major.y = element_line(colour = "gray60", linetype = 3),
           panel.border = element_blank(),
           panel.background = element_blank()) +
-    guides(fill = FALSE) #<-removes legend
+    theme_mpr() +
+    guides(fill = FALSE)   #<-removes legend
+
 
   return(plotpsmdist)
 }
