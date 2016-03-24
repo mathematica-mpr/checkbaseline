@@ -21,7 +21,8 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
   geom_rect(data=df.bars,
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
                 fill = balance), alpha = 0.2) +
-  scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
+  #scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
+   scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
   scale_alpha(guide = 'none') +
 
   # scatters
@@ -33,19 +34,20 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
   scale_y_continuous(breaks = c(1:ncovs),
                      labels = as.character(unique(plot.df$Name)),
                      limits = c(0.5,ncovs+.5)) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "right",
-        legend.title = element_text(size = 2, colour = "white"),
-        legend.key = element_blank(), #<-removes boxes around key symbols
-        axis.ticks = element_blank(),
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
-        panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
-        panel.border = element_blank()) +
-  #guides(fill = FALSE) + #<-removes rectangles dataset legend
+  # theme_bw(base_size = 14) +
+  # theme(legend.position = "right",
+  #       legend.title = element_text(size = 2, colour = "white"),
+  #       legend.key = element_blank(), #<-removes boxes around key symbols
+  #       axis.ticks = element_blank(),
+  #       panel.grid.major.x = element_blank(),
+  #       panel.grid.minor.x = element_blank(),
+  #       panel.grid.minor.y = element_blank(),
+  #       panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
+  #       panel.border = element_blank()) +
+  # guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
-   theme_mpr()
+   theme_mpr() +
+   theme(legend.title=element_blank())
  return(sb.plot_nm)
 
 }
@@ -91,7 +93,7 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   geom_rect(data=df.bars,
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
                 fill = balance), alpha = 0.2) +
-  scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
+#  scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
   scale_alpha(guide = 'none') +
 
   # scatters
@@ -104,20 +106,22 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   scale_y_continuous(breaks = c(1:ncovs),
                      labels = as.character(unique(plot.df$Name)),
                      limits = c(0.5,ncovs+.5)) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "right",
-        legend.title = element_text(size = 2, colour = "white"),
-        legend.key = element_blank(), #<-removes boxes around key symbols
-        axis.ticks = element_blank(),
-        axis.text = element_text(size = 20),
-        axis.title = element_text(size = 20),
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
-        panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
-        panel.border = element_blank(),
-        strip.background = element_rect(fill="white", color="white")) +
+  # theme_bw(base_size = 14) +
+  # theme(legend.position = "right",
+  #       legend.title = element_text(size = 2, colour = "white"),
+  #       legend.key = element_blank(), #<-removes boxes around key symbols
+  #       axis.ticks = element_blank(),
+  #       axis.text = element_text(size = 20),
+  #       axis.title = element_text(size = 20),
+  #       panel.grid.major.x = element_blank(),
+  #       panel.grid.minor.x = element_blank(),
+  #       panel.grid.minor.y = element_blank(),
+  #       panel.grid.major.y = element_line(colour = "gray30", linetype = 2 ),
+  #       panel.border = element_blank(),
+  #       strip.background = element_rect(fill="white", color="white")) +
    theme_mpr() +
+   theme(legend.title=element_blank()) +
+   scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
 
