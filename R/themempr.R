@@ -25,7 +25,7 @@ theme_mpr <- function(base_size = 14,base_family = "sans") {
       legend.position = "bottom",
       legend.direction = "horizontal",
       legend.box = "vertical",
-      legend.key = element_rect(colour = background, fill = background)
+      legend.key = element_rect(color = background, fill = background)
       ) +
 
     # Title, and axis labels
