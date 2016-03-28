@@ -1,11 +1,3 @@
-#' @title Theme MPR
-#' @param base_size Fonts base size
-#' @param base_family Font family
-#' @return ggplot theme
-#' @examples
-#' theme_mpr(base_size = 14, base_family = "Courier bold")
-#' @export
-
 theme_mpr <- function(base_size = 14, base_family = "sans") {
   # Colors
   background <- "white" # "#F0F0F0"
@@ -64,4 +56,3 @@ theme_mpr <- function(base_size = 14, base_family = "sans") {
     # Margins
     theme(plot.margin = unit(c(1, 1, 1, 1), "lines"))
 }
-
