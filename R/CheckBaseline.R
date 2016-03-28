@@ -65,11 +65,12 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
           combined.tb$Name <- as.character(combined.tb$Name)
           if(combined.tb$Name[i]==variables[j]) {
              combined.tb$Name[i] <- names[j]
+          combined.tb$sortorder[i] <- j
           }
         }
       }
     }
-    #print(combined.tb)
+
 
     # PS distribution
     mypsplot <- psdplot(matched.DF, treatment)

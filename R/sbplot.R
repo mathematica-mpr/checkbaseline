@@ -69,7 +69,7 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
                       levels = c("Great balance","Good balance","Unbalanced")))
 
  # constructing arrows
- plot.df <- arrange(plot.df, Matching, Name) %>%
+ plot.df <- arrange(plot.df, Matching, desc(sortorder)) %>%
   tbl_df %>%
   group_by(Matching) %>%
   dplyr::mutate(NameNumber = row_number())
@@ -87,6 +87,7 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   -.01 * sign(plot.df$Standardized.bias_unmatched - plot.df$Standardized.bias),
   NA)
 
+ #print(plot.df)
  sb.plot_wm <- ggplot() +
 
   # background bars
