@@ -25,7 +25,7 @@
 
 
 
-CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL) {
+CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL, names = NULL) {
 
   # Construct baseformulas for balancing tests
   if(missing(variables)==TRUE) {
@@ -57,6 +57,18 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
 
     # Stacking matched and not matched tables
     combined.tb <- rbind(non_matched.tb, matched.tb)
+
+    # Renaming--assuming the names option was invoked
+    if(missing(names)==FALSE & missing(variables)==FALSE & length(variables)==length(names)) {
+      for(j in 1:length(variables)) {
+        for(i in 1:nrow(combined.tb)) {
+          combined.tb$Name <- as.character(combined.tb$Name)
+          if(combined.tb$Name[i]==variables[j]) {
+             combined.tb$Name[i] <- names[j]
+          }
+        }
+      }
+    }
     #print(combined.tb)
 
     # PS distribution
