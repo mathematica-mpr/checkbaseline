@@ -88,7 +88,7 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
   # Output
   if(missing(matched.DF)==TRUE) {
     output <- list(baseline.plot = mysbplot.1,
-                   balance.tbl = combined.tb)
+                   balance.tbl = non_matched.tb)
   } else {
     output <- list(propensity.plot = mypsplot,
                    baseline.plot = mysbplot.2,
