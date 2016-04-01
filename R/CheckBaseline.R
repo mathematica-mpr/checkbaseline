@@ -38,13 +38,20 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
     baseformulas[i] <- paste0(variables[i], " ~ ", treatment)
   }
   baseformulas <- baseformulas[which(baseformulas!=paste0(treatment, " ~ ", treatment))]
-  #print(baseformulas)
 
   # Balancing test on non-matched data
   myttest0 <- lapply(baseformulas, stdbias, data = raw.DF)
   myttest0 <- rbindlist(myttest0)
   non_matched.tb <- myttest0[,1:2, with = FALSE]
   non_matched.tb[,Matching:="None"]
+  if(missing(names)==FALSE & missing(variables)==FALSE & length(variables)==length(names)) {
+    for(i in 1:length(variables)) {
+      non_matched.tb$Name <- as.character(non_matched.tb$Name)
+      if(non_matched.tb$Name[i] == variables[i]) {
+         non_matched.tb$Name[i] <- names[i]
+      }
+    }
+  }
   #print(non_matched.tb)
 
   # Balancing test on matched data
