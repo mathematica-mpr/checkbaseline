@@ -4,7 +4,8 @@
 \alias{CheckBaseline}
 \title{Check baseline equivalency}
 \usage{
-CheckBaseline(raw.DF, matched.DF = NULL, treatment, variables = NULL)
+CheckBaseline(raw.DF, matched.DF = NULL, treatment, variables = NULL,
+  names = NULL)
 }
 \arguments{
 \item{raw.DF}{data frame you want to check.}
