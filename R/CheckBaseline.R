@@ -70,7 +70,7 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
       for(j in 1:length(variables)) {
         for(i in 1:nrow(combined.tb)) {
           combined.tb$Name <- as.character(combined.tb$Name)
-          if(combined.tb$Name[i]==variables[j]) {
+          if(combined.tb$Name[i]==variables[j] | combined.tb$Name[i]==names[j] ) {
              combined.tb$Name[i] <- names[j]
              combined.tb$sortorder[i] <- j
           }

@@ -74,14 +74,12 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   group_by(Matching) %>%
   dplyr::mutate(NameNumber = row_number())
  plot.df <- arrange(plot.df, Matching, NameNumber)
-
  plot.df <- merge(
   plot.df,
   plot.df[plot.df$Matching == 'None', c('NameNumber', 'Standardized.bias')],
   by = c('NameNumber'),
   suffixes = c('', '_unmatched'),
   all = TRUE)
-
  plot.df$dirsign <- ifelse(
   plot.df$Matching == 'Matched',
   -.01 * sign(plot.df$Standardized.bias_unmatched - plot.df$Standardized.bias),
