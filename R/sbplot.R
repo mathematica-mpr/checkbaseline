@@ -1,9 +1,11 @@
 #### STANDARDIZED BIAS PLOT WITHOUT ARROWS [i.e. no matching]
 sbplot_nm <- function(plot.df = non_matched.tb) {
 
+ a <- -0.4; b <- 0.4
  plot.df$NameNumber <- as.numeric(rownames(plot.df))
  min_x = round(min(plot.df$Standardized.bias),1) -.1
  max_x = round(max(plot.df$Standardized.bias),1) +.1
+ if(min_x > a) { min_x <- a}; if(max_x < b) { max_x <- b}
  range = max(abs(min_x),abs(max_x))
  ncovs <- length(plot.df$Name)
 
@@ -46,8 +48,9 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
   #       panel.border = element_blank()) +
   # guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
-   theme_mpr() +
-   theme(legend.title=element_blank())
+  coord_cartesian(xlim = c(min_x,max_x)) +
+  theme_mpr() +
+  theme(legend.title=element_blank())
  return(sb.plot_nm)
 
 }
