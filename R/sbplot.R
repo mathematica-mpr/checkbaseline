@@ -6,6 +6,8 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
  min_x = round(min(plot.df$Standardized.bias),1) -.1
  max_x = round(max(plot.df$Standardized.bias),1) +.1
  if(min_x > a) { min_x <- a}; if(max_x < b) { max_x <- b}
+ absolute_max <- max(c(abs(min_x),abs(max_x)))
+ min_x <- -1*absolute_max; max_x <- absolute_max
  range = max(abs(min_x),abs(max_x))
  ncovs <- length(plot.df$Name)
 
