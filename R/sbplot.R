@@ -1,7 +1,7 @@
 #### STANDARDIZED BIAS PLOT WITHOUT ARROWS [i.e. no matching]
 sbplot_nm <- function(plot.df = non_matched.tb) {
 
- a <- -0.4; b <- 0.4
+ a <- -0.5; b <- 0.5
  plot.df$NameNumber <- as.numeric(rownames(plot.df))
  min_x = round(min(plot.df$Standardized.bias),1) -.1
  max_x = round(max(plot.df$Standardized.bias),1) +.1
@@ -24,14 +24,15 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
   # background bars
   geom_rect(data=df.bars,
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
-                fill = balance), alpha = 0.2) +
+                fill = balance), alpha = 0.9) +
   #scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
-   scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
+  #scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
+   scale_fill_manual(values = c("#f0f0f0", "#bdbdbd","#636363")) +
   scale_alpha(guide = 'none') +
 
   # scatters
   geom_point(data = plot.df, aes(x = Standardized.bias, y = NameNumber), size = 4) +
-  xlab("Standardized bias") +
+  xlab("Effect size") +
   scale_x_continuous(breaks = c(-.9, -.7, -.5, -.25, -.05, .05, .25, .5, .7, .9),
                      limits = c(-range,range)) +
   ylab(" ") +
@@ -58,12 +59,20 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
 }
 
 #### STANDARDIZED BIAS PLOT WITH ARROWS [i.e. with matched and un-matched data]*
-sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
+sbplot_wm <- function(plot.df, mytitle = "Effect size") {
 
  # obtain parameters
+ a <- -0.5; b <- 0.5
+ plot.df$NameNumber <- as.numeric(rownames(plot.df))
  min_x = round(min(plot.df$Standardized.bias),1) -.1
  max_x = round(max(plot.df$Standardized.bias),1) +.1
- range <- max(abs(min_x),abs(max_x))
+ if(min_x > a) { min_x <- a}; if(max_x < b) { max_x <- b}
+ absolute_max <- max(c(abs(min_x),abs(max_x)))
+ min_x <- -1*absolute_max; max_x <- absolute_max
+ range = max(abs(min_x),abs(max_x))
+ # min_x = round(min(plot.df$Standardized.bias),1) -.1
+ # max_x = round(max(plot.df$Standardized.bias),1) +.1
+ # range <- max(abs(min_x),abs(max_x))
  ncovs <- length(unique(plot.df$Name))
 
  df.bars <- data.frame(xmin = c(-range,-0.25,-0.05,0.05,0.25),
@@ -96,13 +105,13 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   # background bars
   geom_rect(data=df.bars,
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
-                fill = balance), alpha = 0.2) +
+                fill = balance), alpha = 0.9) +
 #  scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
   scale_alpha(guide = 'none') +
 
   # scatters
   geom_point(data = plot.df, aes(x = Standardized.bias, y = NameNumber, colour = Matching), size = 4) +
-  xlab("Standardized bias") +
+  xlab("Effect size") +
   scale_colour_manual(values = c(None = "#34B6E4", Matched = "#002E5F"),
                       labels = c(None = "Before matching", Matched = "After matching"),
                       limits = c("None","Matched")) +
@@ -125,7 +134,8 @@ sbplot_wm <- function(plot.df, mytitle = "Standardized Bias") {
   #       strip.background = element_rect(fill="white", color="white")) +
    theme_mpr() +
    theme(legend.title=element_blank()) +
-   scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
+  #scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
+   scale_fill_manual(values = c("#f0f0f0", "#bdbdbd","#636363")) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +
 
