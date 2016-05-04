@@ -70,11 +70,7 @@ sbplot_wm <- function(plot.df, mytitle = "Effect size") {
  absolute_max <- max(c(abs(min_x),abs(max_x)))
  min_x <- -1*absolute_max; max_x <- absolute_max
  range = max(abs(min_x),abs(max_x))
- # min_x = round(min(plot.df$Standardized.bias),1) -.1
- # max_x = round(max(plot.df$Standardized.bias),1) +.1
- # range <- max(abs(min_x),abs(max_x))
  ncovs <- length(unique(plot.df$Name))
-
  df.bars <- data.frame(xmin = c(-range,-0.25,-0.05,0.05,0.25),
                       xmax = c(-0.25, -0.05, 0.05,0.25,range),
                       ymin = 0.5,
@@ -99,13 +95,14 @@ sbplot_wm <- function(plot.df, mytitle = "Effect size") {
   -.01 * sign(plot.df$Standardized.bias_unmatched - plot.df$Standardized.bias),
   NA)
 
- #print(plot.df)
  sb.plot_wm <- ggplot() +
 
   # background bars
   geom_rect(data=df.bars,
             aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax,
                 fill = balance), alpha = 0.9) +
+     scale_x_continuous(breaks = c(-.9, -.7, -.5, -.25, -.05, .05, .25, .5, .7, .9),
+                        limits = c(-range,range)) +
 #  scale_fill_manual(values = c("#6C6F70","#D7D3C8","#C7BE71","#D7D3C8","#6C6F70")) +
   scale_alpha(guide = 'none') +
 
@@ -134,7 +131,6 @@ sbplot_wm <- function(plot.df, mytitle = "Effect size") {
   #       strip.background = element_rect(fill="white", color="white")) +
    theme_mpr() +
    theme(legend.title=element_blank()) +
-  #scale_fill_manual(values = c("#999967", "#CCCC9A","#666666")) +
    scale_fill_manual(values = c("#f0f0f0", "#bdbdbd","#636363")) +
   #guides(fill = FALSE) + #<-removes rectangles dataset legend
   geom_vline(xintercept = 0, linetype = "longdash", colour="gray") +

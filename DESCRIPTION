@@ -9,7 +9,7 @@ Maintainer: Raul Torres <RTorres@mathematica-mpr.com>
 Description: Check baseline equilevancy
 License: MIT
 Imports:
-    ggplot2,]
+    ggplot2,
     dplyr,
     data.table
 RoxygenNote: 5.0.1
