@@ -25,8 +25,9 @@ psdplot <- function(matched_dta, trt_var, distance = distance, mytitle = "Propen
     ylab("Count of observations") +
     scale_x_continuous(breaks = xvals,
                        limits = c(min_x-.1,max_x+.1)) +
-    scale_fill_manual(values = c("#34B6E4","#002E5F"),
-                      labels = c("Comparison group","Treatment group")) +
+    #scale_fill_manual(values = c("#34B6E4","#002E5F"),
+scale_fill_manual(values = c("#a1d99b","#31a354"),
+                  labels = c("Comparison group","Treatment group")) +
     # theme(legend.position = "right",
     #       legend.title = element_text(size = 2, colour = "white"),
     #       legend.key = element_blank(), #<-removes boxes around key symbols
