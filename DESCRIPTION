@@ -7,7 +7,7 @@ Authors@R: c(person("Ignacio", "Martinez", , "IMartinez@mathematica-mpr.com", c(
              person("Raul", "Torres", , "RTorres@mathematica-mpr.com", "aut"))
 Maintainer: Raul Torres <RTorres@mathematica-mpr.com>
 Description: Check baseline equilevancy
-License: MIT
+License: GPL-3
 Imports:
     ggplot2,
     dplyr,
