@@ -84,7 +84,6 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
     # PS distribution
     mypsplot <- psdplot(matched.DF, treatment)
 
-
     # Std Bias with arrows
     mysbplot.2 <- sbplot_wm(combined.tb)
   } #<-end if missing(matched.DF)

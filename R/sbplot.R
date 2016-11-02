@@ -3,8 +3,8 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
 
  a <- -0.5; b <- 0.5
  plot.df$NameNumber <- as.numeric(rownames(plot.df))
- min_x = round(min(plot.df$Standardized.bias),1) -.1
- max_x = round(max(plot.df$Standardized.bias),1) +.1
+ min_x = round(min(plot.df$Standardized.bias, na.rm=TRUE),1) -.1
+ max_x = round(max(plot.df$Standardized.bias, na.rm=TRUE),1) +.1
  if(min_x > a) { min_x <- a}; if(max_x < b) { max_x <- b}
  absolute_max <- max(c(abs(min_x),abs(max_x)))
  min_x <- -1*absolute_max; max_x <- absolute_max
@@ -60,12 +60,11 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
 
 #### STANDARDIZED BIAS PLOT WITH ARROWS [i.e. with matched and un-matched data]*
 sbplot_wm <- function(plot.df, mytitle = "Effect size") {
-
  # obtain parameters
  a <- -0.5; b <- 0.5
  plot.df$NameNumber <- as.numeric(rownames(plot.df))
- min_x = round(min(plot.df$Standardized.bias),1) -.1
- max_x = round(max(plot.df$Standardized.bias),1) +.1
+ min_x = round(min(plot.df$Standardized.bias, na.rm=TRUE),1) -.1
+ max_x = round(max(plot.df$Standardized.bias, na.rm=TRUE),1) +.1
  if(min_x > a) { min_x <- a}; if(max_x < b) { max_x <- b}
  absolute_max <- max(c(abs(min_x),abs(max_x)))
  min_x <- -1*absolute_max; max_x <- absolute_max
