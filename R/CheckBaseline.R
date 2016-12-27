@@ -32,12 +32,12 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
     nums <- sapply(raw.DF, is.numeric)
     variables <- names(raw.DF[,nums])
   }
-  baseformulas <- ""
 
-  for(i in 1:length(variables)) {
-    baseformulas[i] <- paste0(variables[i], " ~ ", treatment)
-  }
-  baseformulas <- baseformulas[which(baseformulas!=paste0(treatment, " ~ ", treatment))]
+  baseformulas <- lapply(variables,
+                         FUN = function(x, treatment) {
+                           sprintf('`%s` ~ `%s`', x, treatment)
+                         },
+                         treatment = treatment)
 
   # Balancing test on non-matched data
   myttest0 <- lapply(baseformulas, stdbias, data = raw.DF)
