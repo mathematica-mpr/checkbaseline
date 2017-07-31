@@ -107,7 +107,7 @@ sbplot_wm <- function(plot.df, mytitle = "Effect size") {
 
   # scatters
   geom_point(data = plot.df, aes(x = Standardized.bias, y = NameNumber, colour = Matching), size = 4) +
-  xlab("Effect size") +
+  xlab("Standardized Difference") +
   scale_colour_manual(values = c(None = "#34B6E4", Matched = "#002E5F"),
                       labels = c(None = "Before matching", Matched = "After matching"),
                       limits = c("None","Matched")) +
