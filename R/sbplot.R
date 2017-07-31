@@ -32,7 +32,7 @@ sbplot_nm <- function(plot.df = non_matched.tb) {
 
   # scatters
   geom_point(data = plot.df, aes(x = Standardized.bias, y = NameNumber), size = 4) +
-  xlab("Effect size") +
+  xlab("Standardized Difference") +
   scale_x_continuous(breaks = c(-.9, -.7, -.5, -.25, -.05, .05, .25, .5, .7, .9),
                      limits = c(-range,range)) +
   ylab(" ") +
