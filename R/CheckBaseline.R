@@ -41,7 +41,7 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
 
   # Balancing test on non-matched data
   myttest0 <- lapply(baseformulas, stdbias, data = raw.DF)
-  myttest0 <- rbindlist(myttest0)
+  myttest0 <- data.table::rbindlist(myttest0)
   non_matched.tb <- myttest0[,1:2, with = FALSE]
   non_matched.tb[,Matching:="None"]
   if(missing(names)==FALSE & missing(variables)==FALSE & length(variables)==length(names)) {
@@ -57,7 +57,7 @@ CheckBaseline <- function(raw.DF, matched.DF = NULL, treatment, variables = NULL
   # Balancing test on matched data
   if(missing(matched.DF)==FALSE){
     myttest <- lapply(baseformulas, stdbias, data = matched.DF)
-    myttest <- rbindlist(myttest)
+    myttest <- data.table::rbindlist(myttest)
     matched.tb <- myttest[,1:2, with = FALSE]
     matched.tb[,Matching:="Matched"]
     #print(matched.tb)

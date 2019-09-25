@@ -62,7 +62,7 @@ m.out1 <- MatchIt::matchit(Treatment~V1+V2+pre.test,
                            method = "nearest", data = fake.df, replace = T)
 fake.df.matched <- MatchIt::match.data(m.out1)
 
-devtools::use_data(fake.df, fake.df.matched, overwrite = T)
+#devtools::use_data(fake.df, fake.df.matched, overwrite = T)
 
 # data("fake.df")
 # data("fake.df.matched")

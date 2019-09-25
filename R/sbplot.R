@@ -78,17 +78,30 @@ sbplot_wm <- function(plot.df, mytitle = "Effect size") {
                       levels = c("Great balance","Good balance","Unbalanced")))
 
  # constructing arrows
- plot.df <- arrange(plot.df, Matching, desc(sortorder)) %>%
-  tbl_df %>%
-  group_by(Matching) %>%
-  dplyr::mutate(NameNumber = row_number())
- plot.df <- arrange(plot.df, Matching, NameNumber)
+
+ ## Replacing the following commented code to avoid dplyr dependency
+ # plot.df <- arrange(plot.df, Matching, desc(sortorder)) %>%
+ #   tbl_df %>%
+ #   group_by(Matching) %>%
+ #   dplyr::mutate(NameNumber = row_number())
+ # plot.df <- arrange(plot.df, Matching, NameNumber)
+
+ setorder(plot.df, Matching, -sortorder)
+
+ plot.df$NameNumber <- ave(
+   x = plot.df$NameNumber,
+   plot.df$Matching,
+   FUN = seq_along)
+
+ setorder(plot.df, Matching, NameNumber)
+
  plot.df <- merge(
   plot.df,
   plot.df[plot.df$Matching == 'None', c('NameNumber', 'Standardized.bias')],
   by = c('NameNumber'),
   suffixes = c('', '_unmatched'),
   all = TRUE)
+
  plot.df$dirsign <- ifelse(
   plot.df$Matching == 'Matched',
   -.01 * sign(plot.df$Standardized.bias_unmatched - plot.df$Standardized.bias),
