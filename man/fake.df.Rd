@@ -12,4 +12,3 @@ fake.df
 Fake data before and after matching
 }
 \keyword{datasets}
-

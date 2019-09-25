@@ -10,9 +10,8 @@ Description: Check baseline equilevancy
 License: GPL-3
 Imports:
     ggplot2,
-    dplyr,
     data.table
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.0
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

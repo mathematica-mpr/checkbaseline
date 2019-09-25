@@ -27,6 +27,7 @@ Check baseline equivalency
 
 browseVignettes('checkbaseline')
 }
+
 \examples{
 data("fake.df")
 data("fake.df.matched")
@@ -38,4 +39,3 @@ X <- CheckBaseline(
         )
 X$baseline.plot
 }
-

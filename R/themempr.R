@@ -1,9 +1,14 @@
+#' @title Theme MPR
+#' @param base_size Fonts base size
+#' @param base_family Font family
+#' @return ggplot theme
+#' @examples
+#' theme_mpr(base_size = 14, base_family = "Courier bold")
+
 theme_mpr <- function(base_size = 14, base_family = "sans") {
   # Colors
-  background <- "white" # "#F0F0F0"
+  background <- "#F0F0F0"
   grid <- "#D9D9D9"
-  grid.major <- "grey90"
-  grid.minor <- "grey98"
   axis.text <- "#737373"
   axis.title <- "#525252"
   plot.title <- "#000000"
@@ -21,9 +26,9 @@ theme_mpr <- function(base_size = 14, base_family = "sans") {
 
     # Grid
     theme(
-      panel.grid.major = element_line(color = grid.major, size = .25),
+      panel.grid.major = element_line(color = grid, size = .25),
       panel.grid.minor = element_line(
-        color = grid.minor,
+        color = grid,
         size = .15,
         linetype = "dashed"
       ),
